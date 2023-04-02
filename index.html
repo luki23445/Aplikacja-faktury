@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fakturomat</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./preloader.css">
+
+
+  <script src="https://kit.fontawesome.com/cbd8a1cfd7.js" crossorigin="anonymous"></script>
+  <link href="file:///C:/Users/%C5%81ukasz/Documents/Faktura%20html/test/test1.html" rel="import" />
+  <link rel="icon" type="image/x-icon" href="invoice.ico">
+</head>
+
+<body>
+  <div id="contextMenu" class="context-menu" style="display: none">
+    <ul class="menu">
+      <li class="share"><a href="#"><i class="fa fa-share" aria-hidden="true"></i> Udostępnij</a></li>
+      <li class="rename"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Zmień nazwę</a></li>
+      <li class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i> Kopiuj link</a></li>
+      <li class="copy"><a href="#"><i class="fa fa-copy" aria-hidden="true"></i> Kopiuj</a></li>
+      <li class="paste"><a href="#"><i class="fa fa-paste" aria-hidden="true"></i> Wklej</a></li>
+      <li class="download"><a href="#"><i class="fa fa-download" aria-hidden="true"></i> Pobierz</a></li>
+      <li class="trash"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Usuń</a></li>
+      <li class="print"><a onclick=" printDivContent()"><i class="fa fa-print" aria-hidden="true"></i> Drukuj</a></li>
+    </ul>
+  </div>
+  <div id="preloader">
+    <div id="lewy"></div>
+    <div id="prawy"></div>
+    <div id="a_preloader">
+      <a>
+        <div id="p_preloader">
+          <p>loading</p>
+        </div>
+        <div id="h1_preloader">
+          <h1 id="proc">%
+          </h1>
+        </div>
+        <div id="hr1">
+          <hr id="hr">
+        </div>
+      </a>
+    </div>
+  </div>
+  <div id="podglad_faktur_modal" style="display: none ;">
+    <div id="card_pdf">
+      <div class="row">
+
+        <div id="pokaz"></div>
+
+        <div class="column">
+          <div class="card">
+            <h3>Card 2</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+            <a>pokaż Fakture</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <nav class="sidebar-navigation" id="sidebar_navigation">
+    <ul>
+      <li>
+        <button onclick="tryb()" class="fa fa-moon fa-2x title_1"></button>
+        <span class="tooltip">Zmień motyw</span>
+      </li>
+      <li>
+        <button class="fa fa-gears fa-2x open-modal title_2" id="open-modal"></button>
+        <span class="tooltip">Opcje Zaawansowane</span>
+      </li>
+      <li>
+        <button class="fa fa-pen-to-square fa-2x open-modal1 title_3" id="open-modal1"></button>
+        <span class="tooltip">Wprowadź Dane</span>
+      </li>
+      <li>
+        <button class="fa fa-file-pdf fa-2x title_4"></button>
+        <span class="tooltip">Pobierz PDF</span>
+      </li>
+      <li>
+        <button class="fa fa-print fa-2x title_5" onclick=" podgladwydruku()"></button>
+        <span class="tooltip">Drukuj</span>
+      </li>
+      <li>
+        <button class="fa fa-paper-plane fa-2x title_6"></button>
+        <span class="tooltip">wyślij Fakture Mailem</span>
+      </li>
+      <li>
+        <button onclick="nastepna()" id="nastepna" class="fa-solid fa-circle-right fa-2x title_7"></button>
+        <span class="tooltip">Następna Faktura</span>
+      </li>
+      <li>
+        <button id="podglad_faktur_disabled" class="fa-solid fa-file-circle-plus fa-2x "></button>
+        <button id="podglad_faktur_active" style="display:none;" class="fa-solid fa-file-circle-minus fa-2x"></button>
+        <span class="tooltip">Informacje</span>
+      </li>
+      <li>
+        <button class="fa fa-user fa-2x title_8" id="konto" onclick="displayData()"></button>
+        <span class="tooltip">Konto</span>
+      </li>
+      <li>
+        <button onclick="tekst()" id="test" class="fa fa-circle-info fa-2x title_9"></button>
+        <span class="tooltip">Informacje</span>
+      </li>
+    </ul>
+  </nav>
+  <div id="modal" class="modal open/">
+    <div class="modal-container1">
+      <div class="modal-content">
+
+        <h2>Opcje Zaawansowane</h2>
+        <h3>Podaj Datę:</h3>
+        <input type="date" id="Data_in">
+        <h3>Numer Faktur:</h3>
+        <select id="Miejsce_in">
+          <option value="Łódź" selected>Łódź</option>
+          <option value="Warszawa">Warszawa</option>
+          <option value="Kraków">Kraków</option>
+          <option value="Wrocław">Wrocław</option>
+          <option value="Poznań">Poznań</option>
+          <option value="Gdańsk">Gdańsk</option>
+          <option value="Szczecin">Szczecin</option>
+          <option value="Bydgoszcz">Bydgoszcz</option>
+          <option value="Lublin">Lublin</option>
+          <option value="Białystok">Białystok</option>
+          <option value="Katowice">Katowice</option>
+          <option value="Gdynia">Gdynia</option>
+          <option value="Częstochowa">Częstochowa
+          <option value="Radom">Radom</option>
+          <option value="Toruń">Toruń</option>
+          <option value="Sosnowiec">Sosnowiec</option>
+          <option value="Kielce">Kielce</option>
+          <option value="Rzeszów">Rzeszów</option>
+          <option value="Gliwice">Gliwice</option>
+          <option value="Zabrze">Zabrze</option>
+          <option value="Olsztyn">Olsztyn</option>
+          <option value="Bielsko-Biała">Bielsko-Biała</option>
+          <option value="Bytom">Bytom</option>
+          <option value="Zielona Góra">Zielona Góra</option>
+          <option value="Rybnik">Rybnik</option>
+          <option value="Ruda Śląska">Ruda Śląska</option>
+          <option value="Opole">Opole</option>
+          <option value="Tychy">Tychy</option>
+          <option value="Gorzów Wielkopolski">Gorzów Wielkopolski</option>
+          <option value="Dąbrowa Górnicza">Dąbrowa Górnicza</option>
+          <option value="Elbląg">Elbląg</option>
+          <option value="Płock">Płock</option>
+          <option value="Wałbrzych">Wałbrzych</option>
+          <option value="Włocławek">Włocławek</option>
+          <option value="Tarnów">Tarnów</option>
+          <option value="Chorzów">Chorzów</option>
+          <option value="Koszalin">Koszalin</option>
+          <option value="Kalisz">Kalisz</option>
+          <option value="Legnica">Legnica</option>
+          <option value="Grudziądz">Grudziądz</option>
+          <option value="Jaworzno">Jaworzno</option>
+          <option value="Słupsk">Słupsk</option>
+          <option value="Jastrzębie-Zdrój">Jastrzębie-Zdrój</option>
+          <option value="Nowy Sącz">Nowy Sącz</option>
+          <option value="Jelenia Góra">Jelenia Góra</option>
+          <option value="Siedlce">Siedlce</option>
+          <option value="Mysłowice">Mysłowice</option>
+          <option value="Konin">Konin</option>
+          <option value="Piotrków Trybunalski">Piotrków Trybunalski</option>
+          <option value="Piła">Piła</option>
+          <option value="Inowrocław">Inowrocław</option>
+          <option value="Lubin">Lubin</option>
+          <option value="Ostrów Wielkopolski">Ostrów Wielkopolski</option>
+          <option value="Ostrowiec Świętokrzyski">Ostrowiec Świętokrzyski</option>
+          <option value="Suwałki">Suwałki</option>
+          <option value="Gniezno">Gniezno</option>
+          <option value="Stargard">Stargard</option>
+          <option value="Głogów">Głogów</option>
+          <option value="Siemianowice Śląskie">Siemianowice Śląskie</option>
+          <option value="Pabianice">Pabianice</option>
+          <option value="Leszno">Leszno</option>
+          <option value="Zamość">Zamość</option>
+          <option value="Łomża">Łomża</option>
+          <option value="Chełm">Chełm</option>
+          <option value="Tomaszów Mazowiecki">Tomaszów Mazowiecki</option>
+          <option value="Żory">Żory</option>
+          <option value="Ełk">Ełk</option>
+          <option value="Pruszków">Pruszków</option>
+          <option value="Tarnowskie Góry">Tarnowskie Góry</option>
+          <option value="Przemyśl">Przemyśl</option>
+          <option value="Stalowa Wola">Stalowa Wola</option>
+          <option value="Kędzierzyn-Koźle">Kędzierzyn-Koźle</option>
+          <option value="Mielec">Mielec</option>
+          <option value="Tczew">Tczew</option>
+          <option value="Bełchatów">Bełchatów</option>
+          <option value="Biała Podlaska">Biała Podlaska</option>
+          <option value="Świdnica">Świdnica</option>
+          <option value="Będzin">Będzin</option>
+          <option value="Zgierz">Zgierz</option>
+          <option value="Piekary">Piekary</option>
+          <option value="Śląskie">Śląskie</option>
+          <option value="Racibórz">Racibórz</option>
+          <option value="Legionowo">Legionowo</option>
+          <option value="Ostrołęka">Ostrołęka</option>
+          <option value="Świętochłowice">Świętochłowice</option>
+          <option value="Wejherowo">Wejherowo</option>
+          <option value="Zawiercie">Zawiercie</option>
+          <option value="Rumia">Rumia</option>
+          <option value="Starachowice">Starachowice</option>
+          <option value="Skierniewice">Skierniewice</option>
+          <option value="Wodzisław Śląski">Wodzisław Śląski</option>
+          <option value="Piaseczno">Piaseczno</option>
+          <option value="Starogard Gdański">Starogard Gdański</option>
+          <option value="Puławy">Puławy</option>
+          <option value="Tarnobrzeg">Tarnobrzeg</option>
+          <option value="Krosno">Krosno</option>
+          <option value="Kołobrzeg">Kołobrzeg</option>
+          <option value="Radomsko">Radomsko</option>
+          <option value="Dębica">Dębica</option>
+          <option value="Otwock">Otwock</option>
+          <option value="Skarżysko-Kamienna">Skarżysko-Kamienna</option>
+        </select>
+        <h3>Numer Faktur:</h3>
+        <input type="text" id="nr_faktury_in" placeholder="Numer Faktury" maxlength="3"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+        <h3>Forma Zapłaty</h3>
+        <select id="Forma_in">
+          <option value="Przelew" selected>Przelew</option>
+          <option value="Karta">Karta</option>
+          <option value="Gotówka">Gotówka</option>
+        </select>
+
+      </div>
+      <span id="close-modal" class="close-modal">&times;</span>
+    </div>
+  </div>
+
+  <div id="modal1" class="modal1 open1/">
+    <div class="modal-container1">
+      <div class="modal-content1">
+
+        <h2>Wprowadź Dane</h2>
+        <textarea id="nabywca_in" rows="10" cols="331" placeholder="Wpisz tekst..."></textarea>
+        <h2>Przedmiot:</h2>
+        <h3>Ilość:</h3>
+        <input type="text" id="ilosc1_in" placeholder="Wpisz tekst..." />
+        <h3>Stawka Vat</h3><input type="checkbox" name="" id="stawka_vat_auto" onclick="myFunction()" checked>
+        <input type="text" id="stawkavat1_in" placeholder="Wpisz tekst..." />
+        <h3>Cena Brutto</h3>
+        <input type="text" id="cena_brutto1_in" placeholder="Wpisz tekst..." />
+        <h2>Wysyłka:</h2>
+        <h3>Cena Brutto</h3>
+        <input type="text" id="cena_brutto2_in" placeholder="Wpisz tekst..." />
+      </div>
+      <span id="close-modal1" class="close-modal1">&times;</span>
+    </div>
+  </div>
+
+  <div id="printContent">
+    <div id="mydiv">
+      <div id="mydivheader">
+        <div class="podglad_wydruku_modal">
+
+          <div class="sprzedawca_podglad">
+            <h2>Sprzedawca</h2>
+            <ul>
+              <li>Nazwa Firmy</li>
+              <li>Ul. Firmy</li>
+              <li>Miasto 12-345</li>
+              <li>Kraj</li>
+              <li>NIP: PL0123456789</li>
+            </ul>
+          </div>
+          <div class="info_podglad">
+
+            <div class="info_out_podglad">
+              <ul>
+                <li><output id="Miejsce_out_podglad"></output></li>
+                <li><output id="Data_ou_podglad"></output></li>
+                <li><output id="Forma_ou_podglad"></output></li>
+              </ul>
+            </div>
+            <div class="info_txt_podglad">
+              <ul>
+                <li>Miejsce wystawienia:</li>
+                <li>Data wystawienia:</li>
+                <li>Forma zapłaty:</li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="nr_faktury_podglad">
+            <div id="podglad_nr_faktury"></div>
+          </div>
+          <div class="nabywca_podglad">
+            <div class="nabywca">
+              <h2>Nabywca</h2>
+              <div class="nabywca_text"><output id="nabywca_ou_podglad"></output></div>
+            </div>
+          </div>
+          <div class="tabela1_podglad">
+            <table>
+              <thead>
+                <tr>
+                  <th>lp.</th>
+                  <th>Nazwa Towaru</th>
+                  <th>Ilość</th>
+                  <th>Jm</th>
+                  <th>Cena Netto</th>
+                  <th>Stawka VAT</th>
+                  <th>Wartość Netto</th>
+                  <th>Wartość VAT</th>
+                  <th>Wartość Brutto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>Produkt</td>
+                  <td id="ilosc1_ou_podglad"></td>
+                  <td>szt</td>
+                  <td id="cenanetto1_ou_podglad"></td>
+                  <td id="stawkavat1_ou_podglad"></td>
+                  <td id="wartoscnetto1_ou_podglad"></td>
+                  <td id="wartoscvat1_ou_podglad"></td>
+                  <td id="wartoscbrutto1_ou_podglad"></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Wysyłka</td>
+                  <td>1</td>
+                  <td>szt</td>
+                  <td id="cenanetto2_ou_podglad"></td>
+                  <td id="stawkavat2_ou_podglad"></td>
+                  <td id="wartoscnetto2_ou_podglad"></td>
+                  <td id="wartoscvat2_ou_podglad"></td>
+                  <td id="cena_brutto2_ou_podglad"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tabela2_podglad">
+            <table>
+              <tbody>
+                <tr>
+                  <th>Stawka VAT</th>
+                  <th>Wartość Netto</th>
+                  <th>Wartość VAT</th>
+                  <th>Wartość Brutto</th>
+                </tr>
+                <tr>
+                  <td id="stawkavat3_ou_podglad"></td>
+                  <td id="wartoscnetto3_ou_podglad"></td>
+                  <td id="wartoscvat3_ou_podglad"></td>
+                  <td id="wartoscbrutto3_ou_podglad"></td>
+                </tr>
+                <tr>
+                  <td>Razem</td>
+                  <td id="wartoscnetto4_ou_podglad"></td>
+                  <td id="wartoscvat4_ou_podglad"></td>
+                  <td id="wartoscbrutto4_ou_podglad"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="kwota_podglad">
+            <h3>Do zapłaty: <output id="do_zaplaty_ou_podglad"></output></h3>
+          </div>
+          <div class="kwota_slownie_podglad">
+            <h3>Slownie: <output id="slownie_ou_podglad"></output><output id="slownie_zl_ou_podglad"></output><output
+                id="slownie_gr_ou_podglad"></output></h3>
+          </div>
+          <div class="osoba_odbier_podglad">
+            <h3></h3>
+          </div>
+          <div class="osoba_wysylajaca_podglad">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faktura" id="invoice">
+    <div class="sprzedawca">
+      <h2>Sprzedawca</h2>
+      <ul>
+        <li>Nazwa Firmy</li>
+        <li>Ul. Firmy</li>
+        <li>Miasto 12-345</li>
+        <li>Kraj</li>
+        <li>NIP: PL0123456789</li>
+      </ul>
+    </div>
+    <div class="informacjeoutput">
+      <ul>
+        <li><output id="Miejsce_out"></output></li>
+        <li><output id="Data_ou"></output></li>
+        <li><output id="Forma_ou"></output></li>
+      </ul>
+    </div>
+    <div class="informacje">
+      <ul>
+        <li>Miejsce wystawienia:</li>
+        <li>Data wystawienia:</li>
+        <li>Forma zapłaty:</li>
+      </ul>
+    </div>
+
+    <div class="nr" id="nr">
+      <div class="don">
+        <h1>Faktura nr:</h1>
+      </div>
+      <div class="don">
+        <h1><output id="nr_faktury_ou"></output></h1>
+        </h1>
+      </div>
+      <div class="don">
+        <h1> / </h1>
+      </div>
+      <h1><output id="Data_ou1"></output></h1>
+    </div>
+    <div class="nabywca">
+      <h2>Nabywca</h2>
+      <div class="nabywca_text"><output id="nabywca_ou"></output></div>
+    </div>
+    <table class="Tabela1" id="Tabela1">
+      <thead>
+        <tr>
+          <th>lp.</th>
+          <th>Nazwa Towaru</th>
+          <th>Ilość</th>
+          <th>Jm</th>
+          <th>Cena Netto</th>
+          <th>Stawka VAT</th>
+          <th>Wartość Netto</th>
+          <th>Wartość VAT</th>
+          <th>Wartość Brutto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.</td>
+          <td>Spoiler</td>
+          <td id="ilosc1_ou"></td>
+          <td>szt</td>
+          <td id="cenanetto1_ou"></td>
+          <td id="stawkavat1_ou"></td>
+          <td id="wartoscnetto1_ou"></td>
+          <td id="wartoscvat1_ou"></td>
+          <td id="wartoscbrutto1_ou"></td>
+        </tr>
+        <tr>
+          <td>2.</td>
+          <td>Wysyłka</td>
+          <td>1</td>
+          <td>szt</td>
+          <td id="cenanetto2_ou"></td>
+          <td id="stawkavat2_ou"></td>
+          <td id="wartoscnetto2_ou"></td>
+          <td id="wartoscvat2_ou"></td>
+          <td id="cena_brutto2_ou"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="wolnemiejsce">
+      <table class="Tabela2">
+        <thead>
+          <tr>
+            <th>Stawka VAT</th>
+            <th>Wartość Netto</th>
+            <th>Wartość VAT</th>
+            <th>Wartość Brutto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="stawkavat3_ou"></td>
+            </td>
+            <td id="wartoscnetto3_ou"></td>
+            <td id="wartoscvat3_ou"></td>
+            <td id="wartoscbrutto3_ou"></td>
+          </tr>
+          <tr>
+            <td>Razem</td>
+            <td id="wartoscnetto4_ou"></td>
+            <td id="wartoscvat4_ou"></td>
+            <td id="wartoscbrutto4_ou"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kwota">
+      <div class="dozaplaty">
+        <h3>Do zapłaty: <output id="do_zaplaty_ou"></output></h3>
+      </div>
+    </div>
+    <div class="kwota">
+      <div class="slownie">
+        <h3>Slownie: <output id="slownie_ou"></output><output id="slownie_zl_ou"></output><output
+            id="slownie_gr_ou"></output></h3>
+      </div>
+    </div>
+    <div class="podpisy">
+      <div class="osobawystawia">
+        <h3></h3>
+      </div>
+      <div class="osobodbiera">
+        <h3></h3>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="./app.js"></script>
+  <script src="./title.js"></script>
+  <script src="./preloader.js"></script>
+
+</body>
+
+</html>
