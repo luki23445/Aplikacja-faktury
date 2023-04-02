@@ -1,0 +1,831 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #dde1e7;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: scroll;
+}
+
+html::-webkit-scrollbar {
+  width: 0px;
+}
+
+.faktura {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 50%;
+  height: 910px;
+  border-radius: 15px;
+  padding: 3%;
+  background: #cdcfd3;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.75),
+    10px 50px 70px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 20px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+}
+
+/*______________________________MENU MOBILNE ________________________________*/
+.otwieracz {
+  margin-top: 45%;
+  margin-left: 45%;
+  margin-right: 45%;
+  position: fixed;
+}
+
+.otwieracz button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  z-index: 40;
+}
+
+/*______________________________MENU________________________________*/
+.sidebar-navigation {
+  margin-top: -5%;
+  min-height: 100vh;
+  width: 80px;
+  background: #cdcfd3;
+  box-sizing: border-box;
+  box-shadow: 6px 0px 10px rgba(36, 35, 35, 0.8),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+  float: left;
+  position: fixed;
+  z-index: 243;
+}
+
+.sidebar-navigation ul li {
+  cursor: pointer;
+  transition: all ease-out 120ms;
+}
+
+.sidebar-navigation ul li button {
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff00;
+  border: #ffffff00;
+}
+
+.sidebar-navigation ul li .tooltip {
+  display: inline-block;
+  position: absolute;
+  background-color: #cccdd3;
+  padding: 8px 15px;
+  border-radius: 3px;
+  margin-top: 10px;
+  left: 90px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-navigation ul li .tooltip:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -4px;
+  top: 10px;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: inherit;
+}
+
+.sidebar-navigation ul li:hover {
+  background-color: #cccdd3;
+  box-sizing: border-box;
+  box-shadow: 6px 0px 10px rgba(36, 35, 35, 0.8),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+}
+
+.sidebar-navigation ul li:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sidebar-navigation ul li button {
+  color: #000000;
+}
+
+/*__________________________________sprzedawca___________________________________*/
+.sprzedawca {
+  width: 30%;
+  float: left;
+  list-style-type: none;
+}
+
+.sprzedawca ul {
+  list-style-type: none;
+}
+
+.sprzedawca h2 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+/*__________________________________informacje___________________________________*/
+.informacjeoutput {
+  margin-top: 5%;
+  width: 10%;
+  float: right;
+}
+
+.informacjeoutput ul {
+  list-style-type: none;
+  text-align: left;
+  float: left;
+}
+
+.informacje {
+  margin-top: 5%;
+  width: 20%;
+  float: right;
+  padding: 0;
+}
+
+.informacje ul {
+  list-style-type: none;
+  text-align: right;
+  float: right;
+}
+
+/*__________________________________MODAL AUTO_______________________________*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  display: flex;
+  z-index: 11;
+}
+
+.modal-container1 {
+
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 10px;
+
+
+
+  background: #dde1e7;
+  padding: 30px 35px 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.modal.open .modal-container1 {
+  animation: move 0.6s ease-out;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.modal-content {
+  margin: 0;
+}
+
+.modal-content h2 {
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.modal-content a {
+  font-size: 0.8rem;
+  text-decoration: none;
+  padding-bottom: 1rem;
+  display: inline-block;
+}
+
+.modal-content a:hover {
+  color: salmon;
+}
+
+.close-modal:hover {
+  color: #f00;
+}
+
+/*__________________________________MODAL_______________________________*/
+
+.modal1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal1.open1 {
+  display: flex;
+  z-index: 10;
+}
+
+.modal-container1 {
+
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 10px;
+
+
+
+  background: #dde1e7;
+  padding: 30px 35px 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.modal1.open1 .modal-container1 {
+  animation: move 0.6s ease-out;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.modal-content1 {
+  margin: 0;
+}
+
+.modal-content1 h2 {
+  text-align: center;
+}
+
+.close-modal1:hover {
+  color: #f00;
+}
+
+/*____________________________________POP UP_____________________________________*/
+
+/*______________________________Tryb jasny/ciemny________________________________*/
+.ciemny {
+  background-color: #22242c;
+  color: white;
+}
+
+.ciemny .faktura {
+  background: #313443;
+  box-shadow: 25px 25px 75px rgba(196, 196, 196, 0.75),
+    10px 50px 70px rgba(190, 190, 190, 0.25),
+    inset 5px 5px 10px rgba(194, 194, 194, 0.5),
+    inset 5px 5px 20px rgba(211, 211, 211, 0.2),
+    inset -5px -5px 15px rgba(197, 197, 197, 0.75);
+}
+
+.ciemny .sidebar-navigation {
+  background-color: #313443;
+  box-sizing: border-box;
+  box-shadow: 6px 0px 10px rgba(36, 35, 35, 0.8),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+}
+
+.ciemny .sidebar-navigation ul li .tooltip {
+  background-color: #313443;
+}
+
+.ciemny .sidebar-navigation ul li:hover {
+  background-color: #313443;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: -6px -6px 10px rgba(0, 0, 0, 0.8),
+    6px 6px 10px rgba(255, 255, 255, 0.2);
+}
+
+.ciemny .modal-container1 {
+  background: #22242c;
+  padding: 30px 35px 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: -6px -6px 10px rgba(0, 0, 0, 0.8),
+    6px 6px 10px rgba(255, 255, 255, 0.2);
+}
+
+.ciemny .sidebar-navigation ul li button {
+  color: #b4b4b4;
+}
+
+::-webkit-input-placeholder {
+  color: #656a6c;
+  text-transform: uppercase;
+}
+
+::-moz-placeholder {
+  color: #656a6c;
+  text-transform: uppercase;
+}
+
+:-ms-input-placeholder {
+  color: #656a6c;
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  display: block;
+  height: 43px;
+  width: 100%;
+  padding-left: 8px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  border: none;
+  box-shadow: inset 2px 2px 5px #babecc,
+    inset -5px -5px 10px #ffffff73;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+select,
+textarea {
+  display: block;
+  height: 100px;
+  width: 100%;
+  padding-left: 8px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  border: none;
+  box-shadow: inset 2px 2px 5px #babecc,
+    inset -5px -5px 10px #ffffff73;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+option {
+  background: #dce3ec;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ciemny option {
+  background: #22242c;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*-------------------------------------------------------------*/
+.up {
+  width: 100%;
+  height: 135px;
+}
+
+.nr {
+  font-size: 20px;
+  margin-top: 2%;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.don {
+  float: left;
+}
+
+.nabywca {
+  margin-top: 2%;
+  max-width: 30%;
+  float: left;
+}
+
+.nabywca_text {
+  height: 100px;
+}
+
+.nabywca h2 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+/*____________________________Tabela__________________________*/
+table.Tabela1,
+table.Tabela2 {
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #ffcc00;
+  border-style: solid;
+  color: #000000;
+}
+
+table.Tabela1 {
+  margin-top: 3%;
+  width: 100%;
+}
+
+table.Tabela2 {
+  margin-top: 3%;
+  width: 44.5%;
+  float: right;
+}
+
+table.Tabela1 td,
+table.Tabela2 td,
+table.Tabela1 th,
+table.Tabela2 th {
+  border-width: 2px;
+  border-color: #ffcc00;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.Tabela1 thead,
+table.Tabela2 thead {
+  background-color: #ffcc00;
+}
+
+.dozaplaty {
+  margin-top: 2%;
+  width: 33%;
+  float: right;
+}
+
+.dozaplaty h3 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
+.wolnemiejsce {
+  width: 100%;
+  height: 140px;
+}
+
+.kwota {
+  width: 100%;
+  height: 60px;
+}
+
+.slownie {
+  margin-top: 2%;
+  width: 33%;
+  float: right;
+}
+
+.slownie {
+  height: 80px;
+}
+
+.slownie h3 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.podpisy {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.osobawystawia {
+  margin-left: 1.5%;
+  width: 31.5%;
+  float: left;
+}
+
+.osobawystawia h3 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 3.5px dashed black;
+}
+
+.osobodbiera {
+  margin-right: 1.5%;
+  width: 31.5%;
+  float: right;
+}
+
+.osobodbiera h3 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 3.5px dashed black;
+}
+
+#podglad_faktur_modal {
+  position: absolute;
+  background-color: #e9ecf4;
+  width: calc(100% - 80px);
+  height: 100%;
+  margin-left: 80px;
+  position: fixed;
+  float: right;
+  top: 0;
+  z-index: 192;
+  overflow: scroll;
+}
+
+.column {
+  float: left;
+  width: 45%;
+  padding-left: 4%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.row {
+  margin: 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .column {
+    width: 90%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card {
+  padding: 16px;
+  height: 150px;
+  transition: 0.6s;
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+
+}
+
+.card:hover {
+  transform: scale(1.1);
+
+}
+
+.card p,
+.card h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card a {
+  width: 49%;
+  float: left;
+  color: #ffcc00;
+}
+
+#podglad_wydruku_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 40%;
+  aspect-ratio: 210 / 297;
+  margin-left: 30%;
+  overflow: scroll;
+}
+
+.podglad_nabywca {
+  margin-top: 35%;
+  max-width: 30%;
+  float: left;
+}
+
+.podglad_sprzedawca {
+  width: 20%;
+  float: left;
+  list-style-type: none;
+}
+
+.podglad_wydruku_modal {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 18% 6% 20% 15% 17% 3.5% 15%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sprzedawca_podglad info_podglad"
+    "nr_faktury_podglad nr_faktury_podglad"
+    "nabywca_podglad ."
+    "tabela1_podglad tabela1_podglad"
+    ". tabela2_podglad"
+    ". kwota_podglad"
+    ". kwota_slownie_podglad"
+    "osoba_wysylajaca_podglad osoba_odbier_podglad";
+}
+
+#mydivheader {
+  grid-area: sprzedawca_podglad;
+  border: 1px solid red;
+}
+
+.sprzedawca_podglad {
+  grid-area: sprzedawca_podglad;
+  border: 1px solid red;
+}
+
+.info_podglad {
+  grid-area: info_podglad;
+  border: 1px solid red;
+}
+
+.nr_faktury_podglad {
+  grid-area: nr_faktury_podglad;
+  border: 1px solid red;
+}
+
+.nabywca_podglad {
+  grid-area: nabywca_podglad;
+  border: 1px solid red;
+}
+
+.tabela1_podglad {
+  grid-area: tabela1_podglad;
+  border: 1px solid red;
+}
+
+.tabela2_podglad {
+  grid-area: tabela2_podglad;
+  border: 1px solid red;
+}
+
+.kwota_podglad {
+  grid-area: kwota_podglad;
+  border: 1px solid red;
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
+.kwota_slownie_podglad {
+  grid-area: kwota_slownie_podglad;
+  border: 1px solid red;
+  margin-top: 10px;
+}
+
+.osoba_odbier_podglad {
+  grid-area: osoba_odbier_podglad;
+  border: 1px solid red;
+}
+
+.osoba_wysylajaca_podglad {
+  grid-area: osoba_wysylajaca_podglad;
+  border: 1px solid red;
+}
+
+
+.podglad_wydruku_modal {
+  height: 100%;
+  margin: 0;
+}
+
+.podglad_wydruku_modal {
+  border: 1px solid red;
+}
+
+.info_out_podglad {
+  height: 100%;
+  float: right;
+  text-align: left;
+  padding-top: 30px;
+}
+
+.info_txt_podglad {
+  height: 100%;
+  float: right;
+  text-align: right;
+  padding-top: 30px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nr_faktury_podglad {
+  font-size: 20px;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.osoba_odbier_podglad,
+.osoba_wysylajaca_podglad {
+  width: 80%;
+  margin-left: 10%;
+  border-bottom: 3.5px dashed black;
+}
+
+#mydiv {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 800px;
+  aspect-ratio: 210 / 297;
+  margin-bottom: 5%;
+  padding: 40px 40px 40px 0px;
+
+
+  border: 2px solid;
+  padding: 10px;
+  resize: both;
+  overflow: auto;
+  font-size: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.context-menu {
+  position: absolute;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 150px;
+  box-shadow: 0 10px 20px rgb(64 64 64 / 5%);
+  padding: 10px 0;
+}
+
+.menu>li>a {
+  font: inherit;
+  border: 0;
+  padding: 10px 30px 10px 15px;
+  width: 105px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: unset;
+  color: #000;
+  font-weight: 500;
+  transition: 0.5s linear;
+  -webkit-transition: 0.5s linear;
+  -moz-transition: 0.5s linear;
+  -ms-transition: 0.5s linear;
+  -o-transition: 0.5s linear;
+}
+
+.menu>li>a:hover {
+  background: #f1f3f7;
+  color: #4b00ff;
+}
+
+.menu>li>a>i {
+  padding-right: 10px;
+}
+
+.menu>li.trash>a:hover {
+  color: red;
+}
