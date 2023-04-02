@@ -1,0 +1,184 @@
+body {
+  width: 21cm;
+  height: 29.7cm;
+
+}
+
+#podglad_wydruku_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  overflow: scroll;
+}
+
+.podglad_nabywca {
+  margin-top: 35%;
+  max-width: 30%;
+  float: left;
+}
+
+.podglad_sprzedawca {
+  width: 20%;
+  float: left;
+  list-style-type: none;
+}
+
+.podglad_wydruku_modal {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 18% 6% 20% 15% 17% 4.5% 15%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sprzedawca_podglad info_podglad"
+    "nr_faktury_podglad nr_faktury_podglad"
+    "nabywca_podglad ."
+    "tabela1_podglad tabela1_podglad"
+    ". tabela2_podglad"
+    ". kwota_podglad"
+    ". kwota_slownie_podglad"
+    "osoba_wysylajaca_podglad osoba_odbier_podglad";
+}
+
+#mydivheader {
+  grid-area: sprzedawca_podglad;
+  border: 1px solid red;
+}
+
+.sprzedawca_podglad {
+  grid-area: sprzedawca_podglad;
+  border: 1px solid red;
+}
+
+.info_podglad {
+  grid-area: info_podglad;
+  border: 1px solid red;
+}
+
+.nr_faktury_podglad {
+  grid-area: nr_faktury_podglad;
+  border: 1px solid red;
+}
+
+.nabywca_podglad {
+  grid-area: nabywca_podglad;
+  border: 1px solid red;
+}
+
+.tabela1_podglad {
+  grid-area: tabela1_podglad;
+  border: 1px solid red;
+}
+
+.tabela2_podglad {
+  grid-area: tabela2_podglad;
+  border: 1px solid red;
+}
+
+.kwota_podglad {
+  grid-area: kwota_podglad;
+  border: 1px solid red;
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
+.kwota_slownie_podglad {
+  grid-area: kwota_slownie_podglad;
+  border: 1px solid red;
+  margin-top: 10px;
+}
+
+.osoba_odbier_podglad {
+  grid-area: osoba_odbier_podglad;
+  border: 1px solid red;
+}
+
+.osoba_wysylajaca_podglad {
+  grid-area: osoba_wysylajaca_podglad;
+  border: 1px solid red;
+}
+
+
+.podglad_wydruku_modal {
+  height: 100%;
+  margin: 0;
+}
+
+.podglad_wydruku_modal {
+  border: 1px solid red;
+}
+
+
+
+.info_out_podglad {
+  height: 100%;
+  float: right;
+  text-align: left;
+  padding-top: 30px;
+}
+
+.info_txt_podglad {
+  height: 100%;
+  float: right;
+  text-align: right;
+  padding-top: 30px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nr_faktury_podglad {
+  font-size: 20px;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.osoba_odbier_podglad,
+.osoba_wysylajaca_podglad {
+  width: 80%;
+  margin-left: 10%;
+  border-bottom: 3.5px dashed black;
+}
+
+#mydiv {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  float: left;
+
+
+  border: 2px solid;
+  padding: 10px;
+  resize: both;
+  overflow: auto;
+  font-size: 120%;
+}
+
+
+table {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #7ea8f8;
+  border-style: solid;
+  color: #000000;
+}
+
+table td,
+table th {
+  border-width: 2px;
+  border-color: #7ea8f8;
+  border-style: solid;
+  padding: 5px;
+}
+
+table thead {
+  background-color: #7ea8f8;
+}
