@@ -2,7 +2,7 @@
 
 ### Projekt nie ukończony
 
-#### [Link do strony: ](https://luki23445.github.io/Auta-ui-page/)
+#### [Link do strony: ](https://luki23445.github.io/Aplikacja-faktury/)
 
 ### Języki: HTML, CSS, JavaScript.
 
